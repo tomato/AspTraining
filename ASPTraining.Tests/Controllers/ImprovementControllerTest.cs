@@ -49,9 +49,11 @@ namespace ASPTraining.Tests.Controllers
         [TestMethod]
         public void TestOptionalAndAnonymous()
         {
+            Func<string, string, string> f = (a, b) => Foo(a, b);
+
             //string result = Foo(b: "c");
             //var result =  Foo("f");
-            var result = Foo(null, "f");
+            var result = f(null, "f");
 
             Assert.Fail(result);
             
