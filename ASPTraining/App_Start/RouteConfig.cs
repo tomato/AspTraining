@@ -16,7 +16,7 @@ namespace ASPTraining
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Improvements", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

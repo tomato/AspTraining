@@ -12,12 +12,17 @@ namespace ASPTraining.Controllers
 {
     public class ImprovementsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db;
+
+        public ImprovementsController(ApplicationDbContext applicationDbContext)
+        {
+            db = applicationDbContext;
+        }
 
         // GET: Improvements
         public ActionResult Index()
         {
-            return View(db.Improvements.ToList());
+            return View(db.Improvements.OrderBy(i => i.Status).ToList());
         }
 
         // GET: Improvements/Details/5
