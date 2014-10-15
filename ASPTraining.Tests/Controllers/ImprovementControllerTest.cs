@@ -1,5 +1,6 @@
 ﻿using ASPTraining.Controllers;
 using ASPTraining.Models;
+using ASPTraining.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
@@ -15,22 +16,16 @@ namespace ASPTraining.Tests.Controllers
         [TestMethod]
         public void Index_ShouldOrderImprovementsByStatus()
         {
-            //object initialisation and lists
-            var data = new List<Improvement>(){
-                new Improvement(){ Id=1, Description= "Hi", Status = Status.InProgress},
-                new Improvement(){ Id=2, Description= "Low", Status = Status.Done},
-                new Improvement(){ Id=1, Description= "No", Status = Status.ToDo}
-            };
-
-            var set = new Mock<DbSet<Improvement>>()
-                .SetupData(data);
-
-            var context = new Mock<ApplicationDbContext>();
-            //lambda
-            context.Setup(c => c.Improvements).Returns(set.Object);
+            var repos = new Mock<IImprovementsRepository>();
+            repos.Setup(r => r.SelectAll()).Returns(
+                new List<Improvement>(){
+                    new Improvement(){ Id=1, Description= "Hi", Status = Status.InProgress},
+                    new Improvement(){ Id=2, Description= "Low", Status = Status.Done},
+                    new Improvement(){ Id=1, Description= "No", Status = Status.ToDo}
+            });
 
             // Arrange
-            ImprovementsController controller = new ImprovementsController(context.Object);
+            ImprovementsController controller = new ImprovementsController(repos.Object);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
@@ -43,34 +38,7 @@ namespace ASPTraining.Tests.Controllers
             Assert.AreEqual(Status.InProgress, improvements[1].Status);
             Assert.AreEqual(Status.Done, improvements[2].Status);
 
-            //Optional parameters
         }
 
-        [TestMethod]
-        public void TestOptionalAndAnonymous()
-        {
-            Func<string, string, string> f = (a, b) => Foo(a, b);
-
-            //string result = Foo(b: "c");
-            //var result =  Foo("f");
-            var result = f(null, "f");
-
-            Assert.Fail(result);
-            
-        }
-
-        private string Foo(string a = "a", string b = "b")
-        {
-            return new { a, b }.ToString();
-        }
-
-    }
-
-    public static class StringExtensions
-    {
-        public static string F(this string input, params string[] args)
-        {
-            return String.Format(input, args);
-        }
     }
 }

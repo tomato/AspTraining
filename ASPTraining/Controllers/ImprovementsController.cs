@@ -7,22 +7,23 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ASPTraining.Models;
+using ASPTraining.Repositories;
 
 namespace ASPTraining.Controllers
 {
     public class ImprovementsController : Controller
     {
-        private ApplicationDbContext db;
+        private IImprovementsRepository repos;
 
-        public ImprovementsController(ApplicationDbContext applicationDbContext)
+        public ImprovementsController(IImprovementsRepository repos)
         {
-            db = applicationDbContext;
+            this.repos = repos;
         }
 
         // GET: Improvements
         public ActionResult Index()
         {
-            return View(db.Improvements.OrderBy(i => i.Status).ToList());
+            return View(repos.SelectAll().OrderBy(i => i.Status).ToList());
         }
 
         // GET: Improvements/Details/5
@@ -32,7 +33,7 @@ namespace ASPTraining.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Improvement improvement = db.Improvements.Find(id);
+            Improvement improvement = repos.SelectByID(id.Value);
             if (improvement == null)
             {
                 return HttpNotFound();
@@ -55,8 +56,8 @@ namespace ASPTraining.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Improvements.Add(improvement);
-                db.SaveChanges();
+                repos.Insert(improvement);
+                repos.Save();
                 return RedirectToAction("Index");
             }
 
@@ -70,7 +71,7 @@ namespace ASPTraining.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Improvement improvement = db.Improvements.Find(id);
+            Improvement improvement = repos.SelectByID(id.Value);
             if (improvement == null)
             {
                 return HttpNotFound();
@@ -87,8 +88,8 @@ namespace ASPTraining.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(improvement).State = EntityState.Modified;
-                db.SaveChanges();
+                repos.Update(improvement);
+                repos.Save();
                 return RedirectToAction("Index");
             }
             return View(improvement);
@@ -101,7 +102,7 @@ namespace ASPTraining.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Improvement improvement = db.Improvements.Find(id);
+            Improvement improvement = repos.SelectByID(id.Value);
             if (improvement == null)
             {
                 return HttpNotFound();
@@ -114,19 +115,10 @@ namespace ASPTraining.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Improvement improvement = db.Improvements.Find(id);
-            db.Improvements.Remove(improvement);
-            db.SaveChanges();
+            repos.Delete(id);
+            repos.Save();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
