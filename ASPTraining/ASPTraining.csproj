@@ -205,6 +205,14 @@
     <Compile Include="Migrations\201410180816286_addStatusTb.Designer.cs">
       <DependentUpon>201410180816286_addStatusTb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410181015291_allStatuses.cs" />
+    <Compile Include="Migrations\201410181015291_allStatuses.Designer.cs">
+      <DependentUpon>201410181015291_allStatuses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410181051510_MatchKeyCasing.cs" />
+    <Compile Include="Migrations\201410181051510_MatchKeyCasing.Designer.cs">
+      <DependentUpon>201410181051510_MatchKeyCasing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDBContext.cs" />
@@ -304,6 +312,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410180816286_addStatusTb.resx">
       <DependentUpon>201410180816286_addStatusTb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410181015291_allStatuses.resx">
+      <DependentUpon>201410181015291_allStatuses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410181051510_MatchKeyCasing.resx">
+      <DependentUpon>201410181051510_MatchKeyCasing.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

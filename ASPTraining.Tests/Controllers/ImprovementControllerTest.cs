@@ -19,9 +19,9 @@ namespace ASPTraining.Tests.Controllers
             var repos = new Mock<IImprovementsRepository>();
             repos.Setup(r => r.SelectAll()).Returns(
                 new List<Improvement>(){
-                    new Improvement(){ Id=4, Description= "Done Improvement", Status = new Status(){ Id=3, Description = "Done"}},
-                    new Improvement(){ Id=5, Description= "New Improvement", Status = new Status(){ Id=1, Description = "ToDo"}},
-                    new Improvement(){ Id=6, Description= "IP Improvement", Status = new Status(){ Id=2, Description = "InProgress"}}
+                    new Improvement(){ ID=4, Description= "Done Improvement", Status = new Status(){ ID=3, Description = "Done"}},
+                    new Improvement(){ ID=5, Description= "New Improvement", Status = new Status(){ ID=1, Description = "ToDo"}},
+                    new Improvement(){ ID=6, Description= "IP Improvement", Status = new Status(){ ID=2, Description = "InProgress"}}
             });
 
             // Arrange

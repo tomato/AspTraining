@@ -15,5 +15,6 @@ namespace ASPTraining.Repositories
         void Update(Improvement improvement);
         void Delete(int id);
         void Save();
+        IEnumerable<Status> AllStati();
     }
 }

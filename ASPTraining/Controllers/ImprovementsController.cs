@@ -44,6 +44,7 @@ namespace ASPTraining.Controllers
         // GET: Improvements/Create
         public ActionResult Create()
         {
+            ViewBag.StatusList = new SelectList(repos.AllStati(), "ID", "Description");
             return View();
         }
 
@@ -52,7 +53,7 @@ namespace ASPTraining.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Description,Status")] Improvement improvement)
+        public ActionResult Create([Bind(Include = "Id,Description,StatusID")] Improvement improvement)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +61,7 @@ namespace ASPTraining.Controllers
                 repos.Save();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.StatusList = new SelectList(repos.AllStati(), "ID", "Description");
             return View(improvement);
         }
 
@@ -71,6 +72,8 @@ namespace ASPTraining.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            ViewBag.StatusList = new SelectList(repos.AllStati(),"ID","Description");
             Improvement improvement = repos.SelectByID(id.Value);
             if (improvement == null)
             {
@@ -84,7 +87,7 @@ namespace ASPTraining.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Description,Status")] Improvement improvement)
+        public ActionResult Edit([Bind(Include = "Id,Description,StatusID")] Improvement improvement)
         {
             if (ModelState.IsValid)
             {
@@ -92,6 +95,7 @@ namespace ASPTraining.Controllers
                 repos.Save();
                 return RedirectToAction("Index");
             }
+            ViewBag.StatusList = new SelectList(repos.AllStati(), "ID", "Description");
             return View(improvement);
         }
 

@@ -9,10 +9,10 @@ namespace ASPTraining.Models
 
     public class Improvement
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Description { get; set; }
 
-        public int Status_ID { get; set; }
+        public int StatusID { get; set; }
         public virtual Status Status { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
@@ -20,12 +20,12 @@ namespace ASPTraining.Models
 
     public class Status : IComparable<Status>
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Description { get; set; }
 
         public int CompareTo(Status other)
         {
-            return this.Id.CompareTo(other.Id);
+            return this.ID.CompareTo(other.ID);
         }
     }
 }

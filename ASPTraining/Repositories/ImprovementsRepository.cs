@@ -46,5 +46,11 @@ namespace ASPTraining.Repositories
         {
             db.SaveChanges();
         }
+
+
+        public IEnumerable<Status> AllStati()
+        {
+            return db.Statuses.ToList();
+        }
     }
 }

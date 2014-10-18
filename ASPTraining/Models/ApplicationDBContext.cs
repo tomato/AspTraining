@@ -21,5 +21,6 @@ namespace ASPTraining.Models
 
         public virtual DbSet<Improvement> Improvements { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Status> Statuses { get; set; }
     }
 }
