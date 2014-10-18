@@ -201,6 +201,10 @@
     <Compile Include="Migrations\201410152042580_addComments.Designer.cs">
       <DependentUpon>201410152042580_addComments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410180816286_addStatusTb.cs" />
+    <Compile Include="Migrations\201410180816286_addStatusTb.Designer.cs">
+      <DependentUpon>201410180816286_addStatusTb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDBContext.cs" />
@@ -297,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410152042580_addComments.resx">
       <DependentUpon>201410152042580_addComments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410180816286_addStatusTb.resx">
+      <DependentUpon>201410180816286_addStatusTb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

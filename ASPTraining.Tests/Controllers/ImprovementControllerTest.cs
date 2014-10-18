@@ -19,9 +19,9 @@ namespace ASPTraining.Tests.Controllers
             var repos = new Mock<IImprovementsRepository>();
             repos.Setup(r => r.SelectAll()).Returns(
                 new List<Improvement>(){
-                    new Improvement(){ Id=1, Description= "Hi", Status = Status.InProgress},
-                    new Improvement(){ Id=2, Description= "Low", Status = Status.Done},
-                    new Improvement(){ Id=1, Description= "No", Status = Status.ToDo}
+                    new Improvement(){ Id=4, Description= "Done Improvement", Status = new Status(){ Id=3, Description = "Done"}},
+                    new Improvement(){ Id=5, Description= "New Improvement", Status = new Status(){ Id=1, Description = "ToDo"}},
+                    new Improvement(){ Id=6, Description= "IP Improvement", Status = new Status(){ Id=2, Description = "InProgress"}}
             });
 
             // Arrange
@@ -34,9 +34,9 @@ namespace ASPTraining.Tests.Controllers
             var improvements = result.Model as List<Improvement>;
 
 
-            Assert.AreEqual(Status.ToDo, improvements[0].Status);
-            Assert.AreEqual(Status.InProgress, improvements[1].Status);
-            Assert.AreEqual(Status.Done, improvements[2].Status);
+            Assert.AreEqual("New Improvement", improvements[0].Description);
+            Assert.AreEqual("IP Improvement", improvements[1].Description);
+            Assert.AreEqual("Done Improvement", improvements[2].Description);
 
         }
 
