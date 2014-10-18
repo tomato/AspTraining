@@ -50,7 +50,7 @@ namespace ASPTraining.Repositories
 
         public IEnumerable<Status> AllStati()
         {
-            return db.Statuses.ToList();
+            return db.Status.ToList();
         }
     }
 }
