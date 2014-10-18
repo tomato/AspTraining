@@ -9,12 +9,12 @@ namespace ASPTraining.Repositories
 {
     public interface IImprovementsRepository
     {
-        IEnumerable<Improvement> SelectAll();
-        Improvement SelectByID(int id);
-        void Insert(Improvement improvement);
-        void Update(Improvement improvement);
+        IEnumerable<IImprovement> SelectAll();
+        IImprovement SelectByID(int id);
+        void Insert(IImprovement improvement);
+        void Update(IImprovement improvement);
         void Delete(int id);
         void Save();
-        IEnumerable<Status> AllStati();
+        IEnumerable<IStatus> AllStati();
     }
 }

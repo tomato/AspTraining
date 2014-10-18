@@ -1,34 +1,34 @@
-﻿using ASPTraining.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using ASPTraining.Models;
+using System.Data.Entity;
 
 namespace ASPTraining.Repositories
 {
-    public class ImprovementsRepository : IImprovementsRepository
+    public class DALImprovementRepository : IImprovementsRepository
     {
-        private ApplicationDbContext db = null;
+        private ASPTraining.DAL.ASPTrainingEntities db = null;
 
-        public ImprovementsRepository()
+        public DALImprovementRepository()
         {
-            db = new ApplicationDbContext();
+            db = new ASPTraining.DAL.ASPTrainingEntities();
         }
 
         public IEnumerable<Models.IImprovement> SelectAll()
         {
-            return db.Improvements.ToList();
+            return (IEnumerable<Models.IImprovement>)db.Improvements.ToList();
         }
 
         public Models.IImprovement SelectByID(int id)
         {
-            return db.Improvements.Find(id);
+            return (IImprovement)db.Improvements.Find(id);
         }
 
         public void Insert(Models.IImprovement improvement)
         {
-            db.Improvements.Add((Improvement)improvement);
+            db.Improvements.Add((DAL.Improvement)improvement);
         }
 
         public void Update(Models.IImprovement improvement)
@@ -38,7 +38,7 @@ namespace ASPTraining.Repositories
 
         public void Delete(int id)
         {
-            Improvement existing = db.Improvements.Find(id);
+            DAL.Improvement existing = db.Improvements.Find(id);
             db.Improvements.Remove(existing);
         }
 
@@ -50,7 +50,7 @@ namespace ASPTraining.Repositories
 
         public IEnumerable<IStatus> AllStati()
         {
-            return db.Statuses.ToList();
+            return db.Status.ToList();
         }
     }
 }

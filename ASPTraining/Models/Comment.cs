@@ -7,6 +7,15 @@ using System.Web;
 
 namespace ASPTraining.Models
 {
+    public interface IComment
+    {
+        int Id { get; set; }
+        string Description { get; set; }
+        string User { get; set; }
+        DateTime CreatedDateTime { get; set; }
+        IImprovement Improvement { get; set; }
+    }
+
     public class Comment
     {
         [Key]

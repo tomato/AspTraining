@@ -33,7 +33,7 @@ namespace ASPTraining.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Improvement improvement = repos.SelectByID(id.Value);
+            IImprovement improvement = repos.SelectByID(id.Value);
             if (improvement == null)
             {
                 return HttpNotFound();
@@ -53,7 +53,7 @@ namespace ASPTraining.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Description,StatusID")] Improvement improvement)
+        public ActionResult Create([Bind(Include = "Id,Description,StatusID")] IImprovement improvement)
         {
             if (ModelState.IsValid)
             {
@@ -74,7 +74,7 @@ namespace ASPTraining.Controllers
             }
 
             ViewBag.StatusList = new SelectList(repos.AllStati(),"ID","Description");
-            Improvement improvement = repos.SelectByID(id.Value);
+            IImprovement improvement = repos.SelectByID(id.Value);
             if (improvement == null)
             {
                 return HttpNotFound();
@@ -87,7 +87,7 @@ namespace ASPTraining.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Description,StatusID")] Improvement improvement)
+        public ActionResult Edit([Bind(Include = "Id,Description,StatusID")] IImprovement improvement)
         {
             if (ModelState.IsValid)
             {
@@ -106,7 +106,7 @@ namespace ASPTraining.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Improvement improvement = repos.SelectByID(id.Value);
+            IImprovement improvement = repos.SelectByID(id.Value);
             if (improvement == null)
             {
                 return HttpNotFound();
