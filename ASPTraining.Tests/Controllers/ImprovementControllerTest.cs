@@ -28,7 +28,7 @@ namespace ASPTraining.Tests.Controllers
             ImprovementsController controller = new ImprovementsController(repos.Object);
 
             // Act
-            ViewResult result = controller.Index(1) as ViewResult;
+            ViewResult result = controller.Index() as ViewResult;
 
             // Assert
             var improvements = result.Model as List<Improvement>;

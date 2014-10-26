@@ -10,14 +10,15 @@
     <div class="col-md-3 list-column">
         @foreach (var item in Model)
         {
-            <div class="list-item @(item.ID==ViewBag.SelectedId? "selected" :"")">
-                <h4>@Html.ActionLink(item.Description, "Index", new { id = item.ID })</h4>
+            <div class="list-item @(item.ID==ViewBag.SelectedId? "selected" :"")"
+                 data-url="@Url.Action("Details", new { id = item.ID })">
+                <h4>@Html.DisplayFor(m => item.Description)</h4>
                 <p>@Html.DisplayFor(modelItem => item.Status.Description)</p>
             </div>
         }
     </div>
-    <div class="col-md-9">
-        @{Html.RenderPartial("Details", Model.FirstOrDefault(i => i.ID == ViewBag.SelectedId)); }
+    <div class="col-md-9" id="detailsDiv">
+        @{Html.RenderPartial("Details", Model.FirstOrDefault(i => i.ID == Model.First().ID)); }
     </div>
 
 </div>
