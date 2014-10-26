@@ -1,24 +1,45 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  background-image: url("Images/background.jpg");
 }
-
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+  padding: 30px;
+  margin-top: 30px;
+  background-color: #fff;
+  border-radius: 4px;
 }
-
+.body-content .list-column {
+  background-color: #f6f6f6;
+  border-radius: 4px;
+}
+.body-content .list-column .list-item {
+  padding: 5px 10px;
+  margin: 5px;
+}
+.body-content .list-column .list-item.selected {
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  background-color: #fff;
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
-    white-space: normal;
+  white-space: normal;
 }
-
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
-    max-width: 280px;
+  max-width: 280px;
 }
+.navbar {
+  background-color: #f6f6f6;
+}
+.navbar .nav > li > a:hover,
+.navbar .nav > li > a:focus {
+  background-color: #eeeeee;
+}
+/*# sourceMappingURL=Site.css.map */
