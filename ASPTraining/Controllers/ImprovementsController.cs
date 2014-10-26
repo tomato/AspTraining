@@ -21,9 +21,11 @@ namespace ASPTraining.Controllers
         }
 
         // GET: Improvements
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View(repos.SelectAll().OrderBy(i => i.Status).ToList());
+            var improvements = repos.SelectAll().OrderBy(i => i.Status).ToList();
+            ViewBag.SelectedId = id ?? improvements.FirstOrDefault().ID;
+            return View(improvements);
         }
 
         // GET: Improvements/Details/5

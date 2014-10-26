@@ -9,31 +9,18 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+<div class="row">
+    <div class="col-md-3">
+        @foreach (var item in Model)
+        {
+            <h3>@Html.ActionLink(item.Description, "Index", new { id = item.ID })</h3>
+            <p>@Html.DisplayFor(modelItem => item.Status.Description)</p>
+        }
+    </div>
+    <div class="col-md-9">
+        @{Html.RenderPartial("Details", Model.FirstOrDefault(i => i.ID == ViewBag.SelectedId)); }
+    </div>
 
-</table>
+</div>
+       

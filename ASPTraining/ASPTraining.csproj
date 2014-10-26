@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201410181051510_MatchKeyCasing.Designer.cs">
       <DependentUpon>201410181051510_MatchKeyCasing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410260821068_houstenproblem.cs" />
+    <Compile Include="Migrations\201410260821068_houstenproblem.Designer.cs">
+      <DependentUpon>201410260821068_houstenproblem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDBContext.cs" />
@@ -318,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410181051510_MatchKeyCasing.resx">
       <DependentUpon>201410181051510_MatchKeyCasing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410260821068_houstenproblem.resx">
+      <DependentUpon>201410260821068_houstenproblem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
