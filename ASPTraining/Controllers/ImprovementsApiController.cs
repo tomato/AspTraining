@@ -19,7 +19,6 @@ namespace ASPTraining.Controllers
         // GET: api/ImprovementsApi
         public IQueryable<Improvement> GetImprovements()
         {
-            db.Configuration.ProxyCreationEnabled = false;
             return db.Improvements.Include(i => i.Status).Include(i => i.Comments).AsNoTracking();
         }
 
@@ -27,7 +26,6 @@ namespace ASPTraining.Controllers
         [ResponseType(typeof(Improvement))]
         public IHttpActionResult GetImprovement(int id)
         {
-            db.Configuration.ProxyCreationEnabled = false;
             Improvement improvement = db.Improvements.Include("Status").First(i => i.ID == id);
             if (improvement == null)
             {

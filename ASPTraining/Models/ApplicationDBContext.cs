@@ -12,6 +12,7 @@ namespace ASPTraining.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Configuration.ProxyCreationEnabled = false;
         }
 
         public static ApplicationDbContext Create()
