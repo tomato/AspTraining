@@ -8,17 +8,32 @@
 
 <div class="row">
     <div class="col-md-3 list-column">
-        @foreach (var item in Model)
-        {
-            <div class="list-item @(item.ID==ViewBag.SelectedId? "selected" :"")"
-                 data-url="@Url.Action("Details", new { id = item.ID })">
-                <h4>@Html.DisplayFor(m => item.Description)</h4>
-                <p>@Html.DisplayFor(modelItem => item.Status.Description)</p>
-            </div>
-        }
+                @foreach (var item in Model)
+                {
+                    <div class="list-item @(item.ID==ViewBag.SelectedId? "selected" :"")"
+                         data-url="@Url.RouteUrl("defaultapi", new { httproute="" , controller="ImprovementsApi" , id=item.ID })">
+                        <h4>@Html.DisplayFor(m => item.Description)</h4>
+                        <p>@Html.DisplayFor(modelItem => item.Status.Description)</p>
+                    </div>
+                }
     </div>
     <div class="col-md-9" id="detailsDiv">
-        @{Html.RenderPartial("Details", Model.FirstOrDefault(i => i.ID == Model.First().ID)); }
+        <div>
+
+            <h4>Improvement</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Description
+                </dt>
+
+                <dd id="descriptionField"/>
+                <dt>
+                    Status
+                </dt>
+                <dd id="statusField" />
+            </dl>
+        </div>
     </div>
 
 </div>
